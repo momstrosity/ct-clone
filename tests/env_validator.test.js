@@ -15,10 +15,10 @@ describe('EnvValidator', () => {
 
     it('should throw an error for secrets without character diversity', () => {
       const testCases = [
-        'onlylowercase123456789',
-        'ONLYUPPERCASE123456789',
+        'onlylowercase123456789'.repeat(2),
+        'ONLYUPPERCASE123456789'.repeat(2),
         '12345678901234567890123456789012',
-        'nospecialcharacters123ABC'
+        'nospecialcharacters123ABC'.repeat(2)
       ];
 
       testCases.forEach(secret => {
@@ -27,7 +27,12 @@ describe('EnvValidator', () => {
     });
 
     it('should throw an error for known weak secrets', () => {
-      const weakSecrets = ['secret', 'password', '12345', 'abcdef'];
+      const weakSecrets = [
+        'mysecret123456',
+        'mypassword2023',
+        'serverpassword12345',
+        'secretvalue2023'
+      ];
 
       weakSecrets.forEach(secret => {
         expect(() => EnvValidator.validateSessionSecret(secret)).toThrow('Weak session secret detected');
