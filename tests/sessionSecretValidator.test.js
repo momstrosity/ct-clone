@@ -40,9 +40,9 @@ describe('Session Secret Validator', () => {
 
     it('should reject common weak secrets', () => {
       const weakSecrets = [
-        'mysecretpassword123',
-        'secret123',
-        'passwordWithSecret'
+        'LongSecretThatIncludesSecret123',
+        'MySecretPasswordWith123!',
+        'PasswordThatHasSecret!123'
       ];
       
       weakSecrets.forEach(secret => {
