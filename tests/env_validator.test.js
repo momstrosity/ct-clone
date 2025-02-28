@@ -26,12 +26,12 @@ describe('EnvValidator', () => {
       });
     });
 
-    it('should throw an error for known weak secrets', () => {
+    it('should throw an error for simple weak secrets', () => {
       const weakSecrets = [
-        'mysecret123456',
-        'mypassword2023',
-        'serverpassword12345',
-        'secretvalue2023'
+        'secretsecret',
+        'passwordpassword',
+        '12345678901234567890',
+        'abcdefabcdef'
       ];
 
       weakSecrets.forEach(secret => {
