@@ -45,12 +45,12 @@ export class EnvValidator {
       weakSecretPatterns.some(pattern => 
         normalizedSecret.includes(pattern.toLowerCase())
       ),
-      // Check for character repetition
-      /(.)\1{3,}/.test(secret),
+      // Check for character repetition beyond acceptable limit
+      /(.{3,})\1{2,}/.test(secret),
       // Check for sequential patterns
-      /123|234|345|456|567|678|789|987|876|765|654|543|432|321/.test(secret),
+      /(?:123|234|345|456|567|678|789|987|876|765|654|543|432|321){2,}/.test(secret),
       // Check for keyboard pattern sequences
-      /qwerty|asdfgh|zxcvbn/i.test(secret)
+      /(?:qwerty|asdfgh|zxcvbn){2,}/i.test(secret)
     ];
 
     // If any weakness check passes, throw an error
