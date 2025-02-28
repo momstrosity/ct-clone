@@ -5,7 +5,7 @@
 	"main": "src/server.js",
 	"type": "module",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
+		"test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
 		"start": "node .",
 		"dev": "nodemon . --ignore 'src/assets/js/*.js' --ignore 'cypress/**/*.js' --ignore 'test/**/*.js'",
 		"css": "npx tailwindcss -i ./src/tailwind.css -o ./src/assets/css/index.css --watch",
@@ -56,5 +56,14 @@
 		"nodemon": "^3.0.2",
 		"supertest": "^6.3.3",
 		"tailwindcss": "^3.1.8"
+	},
+	"jest": {
+		"transform": {
+			"^.+\\.js$": "babel-jest"
+		},
+		"extensionsToTreatAsEsm": [".js"],
+		"moduleNameMapper": {
+			"^(\\.{1,2}/.*)\\.js$": "$1"
+		}
 	}
 }
