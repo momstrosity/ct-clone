@@ -27,6 +27,8 @@ import oauthRouter from "./routes/oauthRouter.js";
 import lessonRouter from "./routes/lessonRouter.js";
 import hwRouter from "./routes/hwRouter.js";
 
+import { EnvValidator } from "./utils/env_validator.js";
+
 // const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 
@@ -48,18 +50,21 @@ app.use(cors());
 // });
 
 const store = new MongoDBStore({
-	uri: process.env.DB_URI,
-	collection: "sessions",
+  uri: process.env.DB_URI,
+  collection: "sessions",
 });
 
+// Use EnvValidator to securely retrieve and validate session secret
+const sessionSecret = EnvValidator.getSessionSecret();
+
 app.use(
-	session({
-		secret: process.env.SECRET,
-		resave: false,
-		saveUninitialized: false,
-		cookie: { maxAge: 60 * 60 * 1000 * 24 * 7 }, // 1 week
-		store,
-	})
+  session({
+    secret: sessionSecret,
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 60 * 60 * 1000 * 24 * 7 }, // 1 week
+    store,
+  })
 );
 app.use(passport.initialize());
 app.use(passport.session());
@@ -70,9 +75,9 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) => {
-	res.locals.current_url = req.path;
-	res.locals.env = process.env.NODE_ENV;
-	next();
+  res.locals.current_url = req.path;
+  res.locals.env = process.env.NODE_ENV;
+  next();
 });
 app.use(auth);
 app.use(flash);
@@ -83,7 +88,7 @@ app.use("/oauth", oauthRouter);
 app.use("/class", lessonRouter);
 app.use("/hw", hwRouter);
 app.use((req, res, next) => {
-	res.status(404).render("404");
+  res.status(404).render("404");
 });
 
 connectDB();
