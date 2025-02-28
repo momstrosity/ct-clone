@@ -28,11 +28,14 @@ describe('EnvValidator', () => {
 
     it('should throw an error for weak secrets', () => {
       const weakSecrets = [
-        'secretsecret'.repeat(3),
-        'passwordpassword'.repeat(2),
-        '123456789012345678901234567890123',
-        'abcdefabcdefabcdefabcdefabcdefabcd',
-        '1234567890qwertyuiopQWERTYUIOP!@#'  // keyboard pattern
+        // Repeat common weak patterns
+        'secretsecretSECRET123!',
+        'passwordPASSWORD123!',
+        '123456789012345678901234567890123!S',
+        // Keyboard patterns
+        'qwertyQWERTY123!@#',
+        // Repeated sequential patterns
+        '123123123ABCabc!@#'
       ];
 
       weakSecrets.forEach(secret => {
