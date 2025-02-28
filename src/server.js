@@ -9,6 +9,7 @@ import * as url from "url";
 import dotenv from "dotenv";
 dotenv.config();
 
+import { validateSecret, getEnv } from "./config/env.js";
 import { default as connectMongoDBSession } from "connect-mongodb-session";
 const MongoDBStore = connectMongoDBSession(session);
 
@@ -27,13 +28,12 @@ import oauthRouter from "./routes/oauthRouter.js";
 import lessonRouter from "./routes/lessonRouter.js";
 import hwRouter from "./routes/hwRouter.js";
 
-// const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 
 morgan(":method :url :status :res[content-length] - :response-time ms");
 
 const app = express();
-const port = process.env.PORT;
+const port = getEnv('PORT', 3000);
 
 app.set("views", "./src/views");
 app.set("view engine", "pug");
@@ -43,24 +43,24 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "assets")));
 app.use(cors());
 
-// app.use((req, res, next) => {
-// 	res.render("maintenance");
-// });
-
 const store = new MongoDBStore({
-	uri: process.env.DB_URI,
-	collection: "sessions",
+    uri: getEnv('DB_URI'),
+    collection: "sessions",
 });
 
+// Securely validate session secret
+const sessionSecret = validateSecret(getEnv('SECRET'));
+
 app.use(
-	session({
-		secret: process.env.SECRET,
-		resave: false,
-		saveUninitialized: false,
-		cookie: { maxAge: 60 * 60 * 1000 * 24 * 7 }, // 1 week
-		store,
-	})
+    session({
+        secret: sessionSecret,
+        resave: false,
+        saveUninitialized: false,
+        cookie: { maxAge: 60 * 60 * 1000 * 24 * 7 }, // 1 week
+        store,
+    })
 );
+
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(User.createStrategy());
@@ -70,10 +70,11 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) => {
-	res.locals.current_url = req.path;
-	res.locals.env = process.env.NODE_ENV;
-	next();
+    res.locals.current_url = req.path;
+    res.locals.env = getEnv('NODE_ENV', 'development');
+    next();
 });
+
 app.use(auth);
 app.use(flash);
 
@@ -83,7 +84,7 @@ app.use("/oauth", oauthRouter);
 app.use("/class", lessonRouter);
 app.use("/hw", hwRouter);
 app.use((req, res, next) => {
-	res.status(404).render("404");
+    res.status(404).render("404");
 });
 
 connectDB();
