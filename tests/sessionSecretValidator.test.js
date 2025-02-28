@@ -7,7 +7,8 @@ describe('Session Secret Validator', () => {
   
   beforeEach(() => {
     process.env = { ...originalEnv };
-    process.env.SECRET = 'Valid$ecret123Passw0rd!';
+    // A complex secret that meets all requirements
+    process.env.SECRET = 'ValidS3cretP@ssw0rd!WithC0mplex!ty';
   });
 
   afterEach(() => {
@@ -15,8 +16,10 @@ describe('Session Secret Validator', () => {
   });
 
   describe('validateSessionSecret', () => {
+    const validSecret = 'ValidS3cretP@ssw0rd!WithC0mplex!ty';
+
     it('should accept a valid secret', () => {
-      expect(() => validateSessionSecret('Valid$ecret123Passw0rd!')).to.not.throw();
+      expect(() => validateSessionSecret(validSecret)).to.not.throw();
     });
 
     it('should reject undefined secret', () => {
@@ -32,11 +35,19 @@ describe('Session Secret Validator', () => {
     });
 
     it('should reject secrets without complexity', () => {
-      expect(() => validateSessionSecret('onlylowercaseletters')).to.throw('Session secret must include uppercase, lowercase, numbers, and special characters');
+      expect(() => validateSessionSecret('onlylowercaseletterslongerthan32chars')).to.throw('Session secret must include uppercase, lowercase, numbers, and special characters');
     });
 
     it('should reject common weak secrets', () => {
-      expect(() => validateSessionSecret('secret')).to.throw('Session secret is too common or predictable');
+      const weakSecrets = [
+        'mysecretpassword123',
+        'secret123',
+        'passwordWithSecret'
+      ];
+      
+      weakSecrets.forEach(secret => {
+        expect(() => validateSessionSecret(secret), `Should reject secret: ${secret}`).to.throw('Session secret is too common or predictable');
+      });
     });
   });
 
