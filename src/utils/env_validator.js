@@ -30,13 +30,15 @@ export class EnvValidator {
     }
 
     // Optional: Check for common weak secrets
-    const weakSecrets = [
+    const weakSecretPatterns = [
       'secret', 'password', '12345', 'abcdef', 
       process.env.NODE_ENV || '', 
       process.env.PORT || ''
     ];
 
-    if (weakSecrets.some(weakSecret => secret.toLowerCase().includes(weakSecret.toLowerCase()))) {
+    if (weakSecretPatterns.some(pattern => 
+      secret.toLowerCase().includes(pattern.toLowerCase())
+    )) {
       throw new Error('Weak session secret detected');
     }
 
