@@ -14,7 +14,7 @@ export class EnvValidator {
       throw new Error('Session secret is required');
     }
 
-    // Check minimum length (at least 32 characters recommended)
+    // Check length and character diversity first
     if (secret.length < 32) {
       throw new Error('Session secret must be at least 32 characters long');
     }
@@ -36,7 +36,7 @@ export class EnvValidator {
       process.env.PORT || ''
     ];
 
-    if (weakSecrets.includes(secret)) {
+    if (weakSecrets.some(weakSecret => secret.toLowerCase().includes(weakSecret.toLowerCase()))) {
       throw new Error('Weak session secret detected');
     }
 
