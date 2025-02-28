@@ -30,10 +30,11 @@ export function validateSessionSecret(secret) {
     'secret', 
     'password', 
     'mysecret', 
-    process.env.NODE_ENV // Environment name should not be used as secret
+    process.env.NODE_ENV, // Environment name should not be used as secret 
+    'communitytaught' // Prevent project name being used as secret
   ];
 
-  if (weakSecrets.includes(secret.toLowerCase())) {
+  if (weakSecrets.some(weak => secret.toLowerCase().includes(weak))) {
     throw new Error('Session secret is too common or predictable');
   }
 
