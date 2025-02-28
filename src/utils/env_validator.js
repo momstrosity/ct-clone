@@ -29,10 +29,11 @@ export class EnvValidator {
       throw new Error('Session secret must include uppercase, lowercase, numbers, and special characters');
     }
 
-    // Weak secret patterns
+    // Common weak secret patterns and environment-specific checks
     const weakSecretPatterns = [
       'secret', 'pass', 'word', 'password', 
       '12345', 'abcdef', '123', 
+      'qwerty', 'asdfgh', 'zxcvbn',
       ...((process.env.NODE_ENV || '').split(' ')),
       ...((process.env.PORT || '').split(' '))
     ];
@@ -45,11 +46,11 @@ export class EnvValidator {
       weakSecretPatterns.some(pattern => 
         normalizedSecret.includes(pattern.toLowerCase())
       ),
-      // Check for character repetition beyond acceptable limit
+      // Detect repetitive sequences
       /(.{3,})\1{2,}/.test(secret),
-      // Check for sequential patterns
+      // Detect predictable number sequences
       /(?:123|234|345|456|567|678|789|987|876|765|654|543|432|321){2,}/.test(secret),
-      // Check for keyboard pattern sequences
+      // Detect keyboard patterns and their variations
       /(?:qwerty|asdfgh|zxcvbn){2,}/i.test(secret)
     ];
 
