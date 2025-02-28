@@ -14,7 +14,7 @@ export class EnvValidator {
       throw new Error('Session secret is required');
     }
 
-    // Check length and character diversity first
+    // Check length first
     if (secret.length < 32) {
       throw new Error('Session secret must be at least 32 characters long');
     }
@@ -29,16 +29,24 @@ export class EnvValidator {
       throw new Error('Session secret must include uppercase, lowercase, numbers, and special characters');
     }
 
-    // Optional: Check for common weak secrets
+    // Optional: Check for common weak secrets and repetitive patterns
     const weakSecretPatterns = [
       'secret', 'password', '12345', 'abcdef', 
-      process.env.NODE_ENV || '', 
-      process.env.PORT || ''
+      ...((process.env.NODE_ENV || '').split(' ')),
+      ...((process.env.PORT || '').split(' '))
     ];
 
-    if (weakSecretPatterns.some(pattern => 
-      secret.toLowerCase().includes(pattern.toLowerCase())
-    )) {
+    const normalizedSecret = secret.toLowerCase();
+    
+    // Check if any weak pattern is fully contained
+    const hasWeakPattern = weakSecretPatterns.some(pattern => 
+      normalizedSecret.includes(pattern.toLowerCase())
+    );
+
+    // Check for character repetition
+    const hasRepeatedPattern = /(.)\1{3,}/.test(secret);
+
+    if (hasWeakPattern || hasRepeatedPattern) {
       throw new Error('Weak session secret detected');
     }
 
