@@ -12,6 +12,8 @@ dotenv.config();
 import { default as connectMongoDBSession } from "connect-mongodb-session";
 const MongoDBStore = connectMongoDBSession(session);
 
+import { getValidatedSessionSecret } from "./utils/sessionSecretValidator.js";
+
 import connectDB from "./config/db.js";
 import google from "./config/googleAuth.js";
 import github from "./config/githubAuth.js";
@@ -27,7 +29,6 @@ import oauthRouter from "./routes/oauthRouter.js";
 import lessonRouter from "./routes/lessonRouter.js";
 import hwRouter from "./routes/hwRouter.js";
 
-// const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 
 morgan(":method :url :status :res[content-length] - :response-time ms");
@@ -43,18 +44,17 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "assets")));
 app.use(cors());
 
-// app.use((req, res, next) => {
-// 	res.render("maintenance");
-// });
-
 const store = new MongoDBStore({
 	uri: process.env.DB_URI,
 	collection: "sessions",
 });
 
+// Validate session secret before using it
+const sessionSecret = getValidatedSessionSecret();
+
 app.use(
 	session({
-		secret: process.env.SECRET,
+		secret: sessionSecret,
 		resave: false,
 		saveUninitialized: false,
 		cookie: { maxAge: 60 * 60 * 1000 * 24 * 7 }, // 1 week
