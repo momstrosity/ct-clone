@@ -1,3 +1,4 @@
+import { describe, test, expect } from 'vitest';
 import { validateSecret, getEnv } from '../src/config/env.js';
 
 describe('Environment Variable Validation', () => {
