@@ -1,0 +1,115 @@
+extends layouts/default.pug
+include ./mixins/classNo.pug
+include ./mixins/lessonLinks.pug
+include ./mixins/homework.pug
+
+block variables
+	- title = lesson.title
+	- active = "Classes"
+	- const watched = lesson.watched ? "checked" : ""
+	- const formattedDates = lesson.dates.map(date => date.toLocaleDateString('en-US', {day: "numeric", month: "short", year: "numeric"})).join(' / ')
+
+block content
+	if !loggedIn
+		include ./partials/flash-nologin.pug
+
+	div(class="sm:flex block justify-between items-baseline")
+		h1
+			+classNo(lesson.classNo)
+			|: #{lesson.title}
+			if loggedIn && user.admin
+				a(href=`/class/edit/${lesson._id}`) #[i.fas.fa-pencil]
+
+		h3(class="mb-4 text-center sm:text-left text-twilight-800 whitespace-nowrap")   #{`${formattedDates}`}
+
+	if lesson.note
+		p(class="mb-3 text-center sm:text-left") !{lesson.note}
+
+	#video-container(class="block text-center sm:text-left mx-auto sm:grid grid-cols-3 gap-10 items-center")
+		#video.col-span-2
+			#player
+				if !lesson.videoId
+					img(src="/img/thumbnails/no-stream-lg.png")
+			.flex
+				.flex-1
+					if prev
+						h3.text-left
+							a(href="/class/" + prev) Previous Class
+				.flex-1.text-center
+					h3
+						a(href="/class/all") Class List
+				.flex-1.text-right
+					if next
+						h3
+							a(href="/class/" + next) Next Class
+		#info
+			if loggedIn
+				if lesson.videoId
+					input.watched.mr-2.mb-1(type="checkbox" id="watched-" + lesson._id autocomplete="off" checked=lesson.watched)
+					label.mr-4.text-pink-800.text-xl.font-medium(for="watched-" + lesson._id) Watched
+
+				if lesson.checkin.length
+					input.checkedin.mr-2.mb-1(type="checkbox" id="checkedin-" + lesson._id autocomplete="off" checked=lesson.checkedIn)
+					label.text-pink-800.text-xl.font-medium(for="checkedin-" + lesson._id) Checked In
+
+			.mb-3(class="mt-3")
+				p
+					+lessonLinks(lesson.checkin, "Check In")
+
+				p
+					+lessonLinks(lesson.slides, "Slides")
+
+				if lesson.materials
+					p #[a(href=lesson.materials  target="_blank") Follow-Along Materials]
+
+					if lesson.motivationLink
+						h2 Motivation
+						a(href=lesson.motivationLink) #{lesson.motivationTitle}
+
+	if lesson.videoId && !lesson.twitchVideo
+		h3.mt-8 Feed the algorithm and spread the word!
+		p #[a(href=`https://www.youtube.com/watch?v=${lesson.videoId}` target="_blank") Like, comment and subscribe on Youtube]
+
+	if assigned.length
+		h2.mt-10.mb-3 Homework Assigned
+		each homework in assigned
+			.mb-6(class="shadow-[0_2px_10px_0_rgba(0,0,0,0.1)]")
+				+homework(homework)
+
+	if due.length
+		h2.mt-10.mb-3 Homework Due
+		each homework in due
+			.mb-6(class="shadow-[0_2px_10px_0_rgba(0,0,0,0.1)]")
+				+homework(homework)
+
+append scripts
+	if loggedIn
+		script(src="/js/hwDone.js")
+		script(src="/js/hwProgress.js")
+		script(src="/js/lessonProgress.js")
+
+	if lesson.videoId && !lesson.twitchVideo
+		script.
+			var tag = document.createElement('script');
+			tag.src = "https://www.youtube.com/iframe_api";
+			var firstScriptTag = document.getElementsByTagName('script')[0];
+			firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+			var player;
+			function onYouTubeIframeAPIReady() {
+				player = new YT.Player('player', {
+					videoId: '#{lesson.videoId}',
+				});
+			}
+			//- function setCurrentTime(slideNum) {
+			//- 	var object = [ 0, 320 ];
+			//- 	player.seekTo(object[slideNum]);
+			//- }
+
+	else if lesson.twitchVideo
+		script(src="https://player.twitch.tv/js/embed/v1.js")
+		script.
+			new Twitch.Player("player", {
+				video: '#{lesson.videoId}',
+				width: "100%",
+				height: "100%"
+			});

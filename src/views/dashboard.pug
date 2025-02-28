@@ -1,0 +1,23 @@
+extends layouts/default.pug
+include ./mixins/lessonCard.pug
+
+block variables
+	- title = "Dashboard"
+	- active = "Dashboard"
+
+block content
+	if(user.admin)
+		h3.mb-6 #[a(href="/class/add") Add Classes] | #[a(href="/hw/add") Add Homework]
+	.flex.justify-center.items-baseline.flex-wrap.flex-wrap-reverse
+		h1.mb-6.mr-auto Your Progress
+		h3.mb-6.text-xl.text-twilight-900.font-medium #{user.username}
+	h2.mb-3 Next Class
+	#next-lesson.w-full.max-w-80
+		if lesson
+			+lessonCard(lesson)
+		else
+			|You've watched all the classes!
+
+
+append scripts
+	script(src="/js/lessonProgress.js")

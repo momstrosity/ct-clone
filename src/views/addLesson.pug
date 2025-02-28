@@ -1,0 +1,61 @@
+extends layouts/default.pug
+
+block variables
+	- const action = edit ? "Edit" : "Add"
+	- title = `${action} Class`
+
+block content
+	form.add-form(action=edit? `/class/edit/${lesson._id}` : "/class/add" method="post")
+		h1.col-span-4 #{action} Class
+		.col-span-1
+		.col-span-3
+			input#twitch.mr-2(type="checkbox" name="twitch" checked=edit? lesson.twitchVideo : false)
+			label(for="twitch") Twitch Video
+		label(for="number") Class Numbers
+		input#number(type="text", name="number" value=edit? lesson.classNo : "")
+		label(for="date") Class Dates
+		input#date(type="text", name="date" value=edit? lesson.dates : "")
+		label(for="video-id") Video ID
+		input#video-id(type="text", name="videoId" value=edit? lesson.videoId : "")
+		label(for="thumbnail") Thumbnail
+		input#thumbnail(type="text", name="thumbnail" disabled=!edit value=edit? lesson.thumbnail : "")
+		label(for="video-title") Video Title
+		input#video-title(type="text", name="videoTitle" value=edit? lesson.title : "")
+		label(for="permalink") Permalink
+		input#permalink(type="text", name="permalink" disabled=!edit value=edit? lesson.permalink : "")
+		label(for="checkin-link") Motivation Link
+		input#motivation-link(type="text", name="motivationLink" value=edit? lesson.motivationLink : "")
+		label(for="checkin-link") Motivation Title
+		input#motivation-title(type="text", name="motivationTitle" value=edit? lesson.motivationTitle : "")
+		label(for="slides-link") Slides
+		input#slides-link(type="text", name="slides" value=edit? lesson.slides : "")
+		label(for="slides-link") Materials
+		input#materials-link(type="text", name="materials" value=edit? lesson.materials : "")
+		label(for="checkin-link") Checkin
+		input#checkin-link(type="text", name="checkin" value=edit? lesson.checkin : "")
+		label(for="number") Cohort
+		input#cohort(type="text", name="cohort" value="2")
+		label(for="number") Note
+		textarea#note.col-span-3(type="text", name="note") #{edit? lesson.note : ""}
+		#timestamps.col-span-4
+			h2.col-span-4.mb-3 Timestamps
+			button#add-timestamp.col-span-4 Add another timestamp
+			if edit && lesson.timestamps.length
+				each timestamp, index in lesson.timestamps
+					.timestamp
+						label(for=`ts-time-${index}`) Time
+						input(type="number", name="tsTime" id=`ts-title-${index}` value=timestamp.time)
+						label(for=`ts-title-${index}`) Title
+						input(type="text", name="tsTitle" id=`ts-title-${index}` value=timestamp.title)
+			else
+				.timestamp
+					label(for="ts-time-0") Time
+					input#ts-time-0(type="number", name="tsTime")
+					label(for="ts-title-0") Title
+					input#ts-title-0(type="text", name="tsTitle")
+		.col-span-4.mt-3.text-center
+			button(class="btn primary max-w-1/3 mx-auto" type="submit") #{action} Class
+
+
+append scripts
+	script(src="/js/addLesson.js")
