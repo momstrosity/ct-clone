@@ -1,59 +1,62 @@
 # Community Taught Web Application
 
-## 📘 Project Overview
+## 📝 Project Overview
 
-Community Taught is a full-featured web application designed as an MVC (Model-View-Controller) boilerplate for Node.js and MongoDB projects. It provides a robust framework with integrated authentication, lesson tracking, and homework management.
+Community Taught is a comprehensive web application designed to support learning and community engagement through an interactive educational platform. The application provides a robust MVC (Model-View-Controller) boilerplate for Node.js and MongoDB projects, featuring authentication, lesson tracking, homework management, and resource sharing.
 
 ### 🌟 Key Features
-- User Authentication (Local, Google, GitHub)
-- Lesson Progression Tracking
-- Homework Management
-- Resource and Community Project Showcase
+- User Authentication (Local, GitHub, and Google OAuth)
+- Lesson Progress Tracking
+- Homework Management and Tracking
+- Community Resources and Downloadable Materials
 - Responsive Design with Tailwind CSS
-- E2E Testing with Cypress
+- Interactive Dashboard
+- Multiple Authentication Strategies
 
 ## 🗂️ Repository Structure
 
 ### Main Directories
-- `/src`: Core application source code
-  - `/assets`: Static assets (CSS, JS, images)
-  - `/config`: Configuration files for database, authentication
-  - `/controllers`: Business logic and request handling
-  - `/middleware`: Express middleware
-  - `/models`: Mongoose data models
-  - `/routes`: Application route definitions
-  - `/views`: Pug template files
+- `src/`: Core application source code
+  - `assets/`: Static assets (CSS, JS, images)
+  - `config/`: Configuration files for database and authentication
+  - `controllers/`: Business logic and request handling
+  - `middleware/`: Custom Express middleware
+  - `models/`: Mongoose data models
+  - `routes/`: Express route definitions
+  - `views/`: Pug template files
 
 ### Key Files
 - `src/server.js`: Main application entry point
 - `package.json`: Project configuration and dependencies
-- `.env.example`: Environment configuration template
-- `cypress.config.js`: Cypress testing configuration
+- `cypress.config.js`: End-to-end testing configuration
+- `.env.example`: Environment variable template
 - `tailwind.config.cjs`: Tailwind CSS configuration
 
 ## 🔧 Technical Details
 
-### Technologies
+### Technologies Used
 - **Backend**: 
   - Node.js
   - Express.js
   - MongoDB (Mongoose)
-  - Passport.js (Authentication)
 - **Frontend**:
-  - Pug Templates
+  - Pug (Template Engine)
   - Tailwind CSS
-- **Testing**: 
-  - Cypress (E2E)
+  - Vanilla JavaScript
+- **Authentication**:
+  - Passport.js
+  - OAuth (GitHub, Google)
+- **Testing**:
+  - Cypress (E2E Testing)
   - Jest (Unit Testing)
 
 ### Architecture
-- **Model-View-Controller (MVC)** design pattern
-- **Authentication Strategies**:
-  - Local Authentication
-  - OAuth (Google, GitHub)
-- **Database**: MongoDB with Mongoose ORM
-- **Session Management**: Express Session
-- **Frontend Rendering**: Server-side with Pug templates
+- **MVC Pattern**
+  - Models: Define data schemas and interactions
+  - Views: Pug templates for rendering
+  - Controllers: Handle request processing
+- **Middleware-based Authentication**
+- **Modular Route Handling**
 
 ## 🚀 Setup and Deployment
 
@@ -62,7 +65,7 @@ Community Taught is a full-featured web application designed as an MVC (Model-Vi
 - MongoDB
 - npm or yarn
 
-### Local Development Setup
+### Installation
 1. Clone the repository
    ```bash
    git clone https://github.com/labrocadabro/node-mongo-boilerplate.git
@@ -74,38 +77,36 @@ Community Taught is a full-featured web application designed as an MVC (Model-Vi
    npm install
    ```
 
-3. Configure Environment
-   - Copy `.env.example` to `.env`
-   - Fill in required configuration:
-     - `PORT`: Application port
-     - `DB_URI`: MongoDB connection string
-     - `SECRET`: Session secret
-     - OAuth credentials (optional)
+3. Create a `.env` file based on `.env.example`
+   - Add MongoDB connection string
+   - Configure OAuth credentials
+   - Set session secrets
 
-4. Run Development Server
-   ```bash
-   # Start server with hot-reload
-   npm run dev
+### Running the Application
+- Development Mode
+  ```bash
+  npm run dev
+  ```
+- Production Start
+  ```bash
+  npm start
+  ```
 
-   # Compile Tailwind CSS
-   npm run css
-   ```
+### Environment Configuration
+- `NODE_ENV`: Application environment
+- `MONGODB_URI`: MongoDB connection string
+- `SESSION_SECRET`: Session encryption key
+- OAuth Client IDs and Secrets for GitHub/Google
 
-### Configuration Options
-Refer to `.env.example` for comprehensive configuration:
-- Database Connection
-- Authentication Providers
-- SMTP Email Settings
-- Environment-specific variables
-
-### Testing
-```bash
-# Run E2E tests
-npm run e2e
-
-# Watch E2E tests
-npm run e2e:watch
-```
+## 🧪 Testing
+- Run E2E Tests
+  ```bash
+  npm run e2e
+  ```
+- Watch E2E Tests
+  ```bash
+  npm run e2e:watch
+  ```
 
 ## 🤝 Contributing
 Please read `CONTRIBUTING.md` for details on our code of conduct and the process for submitting pull requests.
@@ -113,9 +114,9 @@ Please read `CONTRIBUTING.md` for details on our code of conduct and the process
 ## 📄 License
 This project is licensed under the MIT License - see the `LICENSE` file for details.
 
-## 👥 Author
-Laura Abro
+## 🙌 Acknowledgments
+- Community Taught Team
+- Open Source Contributors
 
-## 🔗 Links
-- [GitHub Repository](https://github.com/labrocadabro/node-mongo-boilerplate)
-- [Issue Tracker](https://github.com/labrocadabro/node-mongo-boilerplate/issues)
+## 📞 Support
+For issues or questions, please [open an issue](https://github.com/labrocadabro/node-mongo-boilerplate/issues) on GitHub.
