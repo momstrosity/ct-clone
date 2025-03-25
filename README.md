@@ -2,75 +2,63 @@
 
 ## 🌟 Project Overview
 
-Community Taught is a comprehensive web application designed to facilitate learning, track progress, and provide resources for a coding education community. Built with a modern, modular architecture, the platform offers an interactive and user-friendly experience for learners.
+Community Taught is a comprehensive web application designed to facilitate learning, track progress, and provide resources for students and educators. Built as an MVC (Model-View-Controller) boilerplate, the application supports multiple authentication methods and offers a robust platform for educational management.
 
-### Key Features
-- User Authentication (Local, GitHub, and Google OAuth)
+### 🚀 Key Features
+- User Authentication (Local, Google, GitHub)
 - Lesson Tracking and Progress Management
 - Homework Assignment and Tracking
 - Resource Library
 - Community Project Showcase
 - Responsive Design with Tailwind CSS
 
-## 🗂️ Repository Structure
+## 📂 Repository Structure
 
 ### Main Directories
 - `src/`: Core application source code
-  - `assets/`: Static resources (CSS, JS, images)
+  - `assets/`: Static assets (CSS, JS, Images)
   - `config/`: Configuration files for database and authentication
-  - `controllers/`: Request handling logic
+  - `controllers/`: Business logic handlers
   - `middleware/`: Express middleware
   - `models/`: Mongoose data models
-  - `routes/`: Application route definitions
+  - `routes/`: Express route definitions
   - `views/`: Pug template files
-- `cypress/`: End-to-end testing configurations and specs
-- `data/`: Static JSON data files
-- `src/assets/`: Frontend assets
 
 ### Key Files
-- `src/server.js`: Express application entry point
-- `package.json`: Project configuration and dependencies
+- `server.js`: Main application entry point
 - `.env.example`: Environment configuration template
-- `cypress.config.js`: Cypress testing configuration
+- `package.json`: Project dependencies and scripts
 - `tailwind.config.cjs`: Tailwind CSS configuration
+- `cypress.config.js`: E2E testing configuration
 
 ## 🔧 Technical Details
 
-### Technologies Used
-- **Backend**: 
-  - Node.js
-  - Express.js
-  - MongoDB
-  - Mongoose
-- **Frontend**:
-  - Pug templating engine
-  - Tailwind CSS
-  - Vanilla JavaScript
-- **Authentication**:
-  - Passport.js
-  - OAuth (GitHub, Google)
-- **Testing**:
-  - Cypress (E2E testing)
-  - Jest (Unit testing)
+### Technologies
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB (Mongoose)
+- **Frontend**: Pug Templates, Tailwind CSS
+- **Authentication**: Passport.js (Local, Google, GitHub)
+- **Testing**: Cypress (E2E), Jest
+- **Deployment**: Supports various hosting platforms
 
-### Architecture Overview
-- **MVC (Model-View-Controller)** architectural pattern
-- RESTful API design
-- Session-based authentication
-- Modular and scalable code structure
+### Architecture
+- **MVC Pattern**
+- **Modular Design**
+- **RESTful API Endpoints**
+- **Session-based Authentication**
 
-## 🚀 Setup and Deployment
+## 🛠 Setup and Installation
 
 ### Prerequisites
 - Node.js (v16+)
 - MongoDB
 - npm or yarn
 
-### Local Development Setup
+### Installation Steps
 1. Clone the repository
    ```bash
-   git clone https://github.com/labrocadabro/node-mongo-boilerplate.git
-   cd node-mongo-boilerplate
+   git clone https://github.com/your-repo/community-taught.git
+   cd community-taught
    ```
 
 2. Install dependencies
@@ -78,65 +66,42 @@ Community Taught is a comprehensive web application designed to facilitate learn
    npm install
    ```
 
-3. Create `.env` file
+3. Configure Environment
    - Copy `.env.example` to `.env`
-   - Fill in required environment variables
-     - MongoDB connection string
-     - OAuth client credentials
-     - Session secrets
+   - Fill in required configurations:
+     - Database URI
+     - Authentication credentials
+     - SMTP settings (optional)
 
-4. Run development server
+4. Run Development Server
    ```bash
-   # Start server with nodemon
    npm run dev
-
-   # Compile Tailwind CSS
-   npm run css
    ```
 
 ### Configuration Options
-- Modify `src/config/` files for database and authentication settings
-- Adjust Tailwind configuration in `tailwind.config.cjs`
-- Customize environment variables in `.env`
+- `PORT`: Server port (default: 3000)
+- `NODE_ENV`: Environment mode (development/production)
+- `DB_URI`: MongoDB connection string
+- Authentication providers:
+  - Google OAuth
+  - GitHub OAuth
+  - Local authentication
 
-### Testing
-```bash
-# Run E2E tests
-npm run e2e
+## 🧪 Testing
+- End-to-End Testing: `npm run e2e`
+- Watch E2E Tests: `npm run e2e:watch`
 
-# Open Cypress interactive mode
-npm run e2e:watch
-```
+## 🚢 Deployment
+- Supports various platforms (Heroku, Fly.io, etc.)
+- Use `npm start` for production
 
-## 🧪 User Flows
-
-### Authentication
-- Register with email or OAuth providers
-- Login/Logout functionality
-- Password reset
-- Profile management
-
-### Learning Management
-- Browse and track lessons
-- Mark lessons as complete
-- Submit and track homework assignments
-- View progress dashboards
-
-### Resources
-- Access community projects
-- Download learning materials
-- View FAQ and additional resources
+## 📄 License
+MIT License
 
 ## 🤝 Contributing
 Please read `CONTRIBUTING.md` for details on our code of conduct and the process for submitting pull requests.
 
-## 📄 License
-This project is licensed under the MIT License - see the `LICENSE` file for details.
-
 ## 🙌 Acknowledgments
-- Open-source community
-- Contributors and supporters
-
----
-
-**Happy Coding!** 🚀👩‍💻👨‍💻
+- Passport.js for authentication
+- Tailwind CSS for styling
+- Mongoose for database management
