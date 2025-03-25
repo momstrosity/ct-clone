@@ -2,71 +2,58 @@
 
 ## 🌟 Project Overview
 
-Community Taught is a comprehensive web application designed to facilitate learning, track progress, and provide resources for a coding education community. Built with a modern, modular architecture, the platform offers an interactive and user-friendly experience for learners.
+Community Taught is a comprehensive web application designed to facilitate learning and community engagement through an interactive platform. Built with a modern MVC architecture, the application provides a robust environment for users to track progress, access resources, and interact with educational content.
 
-### Key Features
-- User Authentication (Local, GitHub, and Google OAuth)
-- Lesson Tracking and Progress Management
-- Homework Assignment and Tracking
-- Resource Library
-- Community Project Showcase
-- Responsive Design with Tailwind CSS
+### 🚀 Key Features
+- User Authentication (GitHub and Google OAuth)
+- Lesson and Homework Tracking
+- Progress Monitoring
+- Community Resources
+- Responsive Design
+- Secure Session Management
 
-## 🗂️ Repository Structure
+## 📂 Repository Structure
 
 ### Main Directories
 - `src/`: Core application source code
-  - `assets/`: Static resources (CSS, JS, images)
-  - `config/`: Configuration files for database and authentication
+  - `assets/`: Static resources (CSS, JS, Images)
+  - `config/`: Configuration files (Database, Auth)
   - `controllers/`: Request handling logic
   - `middleware/`: Express middleware
   - `models/`: Mongoose data models
-  - `routes/`: Application route definitions
+  - `routes/`: Application routing
   - `views/`: Pug template files
-- `cypress/`: End-to-end testing configurations and specs
-- `data/`: Static JSON data files
-- `src/assets/`: Frontend assets
 
 ### Key Files
-- `src/server.js`: Express application entry point
-- `package.json`: Project configuration and dependencies
+- `server.js`: Main application entry point
+- `package.json`: Project dependencies and scripts
 - `.env.example`: Environment configuration template
-- `cypress.config.js`: Cypress testing configuration
+- `cypress.config.js`: End-to-end testing configuration
 - `tailwind.config.cjs`: Tailwind CSS configuration
 
 ## 🔧 Technical Details
 
-### Technologies Used
-- **Backend**: 
-  - Node.js
-  - Express.js
-  - MongoDB
-  - Mongoose
-- **Frontend**:
-  - Pug templating engine
-  - Tailwind CSS
-  - Vanilla JavaScript
-- **Authentication**:
-  - Passport.js
-  - OAuth (GitHub, Google)
-- **Testing**:
-  - Cypress (E2E testing)
-  - Jest (Unit testing)
+### Technologies
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB (Mongoose ORM)
+- **Authentication**: Passport.js (GitHub, Google, Local)
+- **Frontend**: Pug Templates, Tailwind CSS
+- **Testing**: Cypress (E2E), Jest (Unit)
 
-### Architecture Overview
-- **MVC (Model-View-Controller)** architectural pattern
-- RESTful API design
-- Session-based authentication
-- Modular and scalable code structure
+### Architecture
+- **Pattern**: Model-View-Controller (MVC)
+- **Authentication**: OAuth 2.0 and Local Strategy
+- **State Management**: Express Sessions
+- **Styling**: Utility-first CSS with Tailwind
 
-## 🚀 Setup and Deployment
+## 🛠 Setup and Installation
 
 ### Prerequisites
 - Node.js (v16+)
 - MongoDB
-- npm or yarn
+- GitHub/Google Developer Account (for OAuth)
 
-### Local Development Setup
+### Installation Steps
 1. Clone the repository
    ```bash
    git clone https://github.com/labrocadabro/node-mongo-boilerplate.git
@@ -78,65 +65,55 @@ Community Taught is a comprehensive web application designed to facilitate learn
    npm install
    ```
 
-3. Create `.env` file
+3. Configure Environment
    - Copy `.env.example` to `.env`
-   - Fill in required environment variables
-     - MongoDB connection string
-     - OAuth client credentials
-     - Session secrets
+   - Fill in required credentials:
+     - MongoDB Connection String
+     - GitHub/Google OAuth Keys
+     - Session Secret
 
-4. Run development server
+4. Start the Application
    ```bash
-   # Start server with nodemon
+   # Development Mode
    npm run dev
 
-   # Compile Tailwind CSS
-   npm run css
+   # Production Mode
+   npm start
    ```
 
-### Configuration Options
-- Modify `src/config/` files for database and authentication settings
-- Adjust Tailwind configuration in `tailwind.config.cjs`
-- Customize environment variables in `.env`
+## 🧪 Testing
 
-### Testing
-```bash
-# Run E2E tests
-npm run e2e
+### End-to-End Testing
+- Run Cypress tests:
+  ```bash
+  npm run e2e
+  ```
 
-# Open Cypress interactive mode
-npm run e2e:watch
-```
+### Available Test Scripts
+- `npm run e2e`: Run tests in Chrome
+- `npm run e2e:watch`: Interactive Cypress console
+- `npm run e2e:record`: Record test run
 
-## 🧪 User Flows
+## 🔐 Authentication Flows
 
-### Authentication
-- Register with email or OAuth providers
-- Login/Logout functionality
-- Password reset
-- Profile management
+### OAuth Providers
+- GitHub
+- Google
+- Local Registration
 
-### Learning Management
-- Browse and track lessons
-- Mark lessons as complete
-- Submit and track homework assignments
-- View progress dashboards
+### User Journey
+1. User selects authentication method
+2. Redirected to OAuth provider
+3. Permissions granted
+4. User profile created/authenticated
+5. Redirected to dashboard
 
-### Resources
-- Access community projects
-- Download learning materials
-- View FAQ and additional resources
+## 📚 Additional Resources
+- [Contributing Guidelines](CONTRIBUTING.md)
+- [License](LICENSE)
 
 ## 🤝 Contributing
-Please read `CONTRIBUTING.md` for details on our code of conduct and the process for submitting pull requests.
+Interested in contributing? Please read our [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
 
-## 📄 License
-This project is licensed under the MIT License - see the `LICENSE` file for details.
-
-## 🙌 Acknowledgments
-- Open-source community
-- Contributors and supporters
-
----
-
-**Happy Coding!** 🚀👩‍💻👨‍💻
+## 📜 License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
