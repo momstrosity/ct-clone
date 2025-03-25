@@ -1,75 +1,70 @@
-# Community Taught Web Application
+# Community Taught Learning Platform
 
-## 📝 Project Overview
+## 🌟 Project Overview
 
-Community Taught is a comprehensive web application designed to support learning and community engagement through an interactive educational platform. The application provides a robust MVC (Model-View-Controller) boilerplate for Node.js and MongoDB projects, featuring authentication, lesson tracking, homework management, and resource sharing.
+Community Taught is an innovative web application designed to provide a structured, community-driven learning experience. It offers a comprehensive platform for tracking lessons, managing homework, and supporting learners through an intuitive and feature-rich interface.
 
-### 🌟 Key Features
+### Key Features
 - User Authentication (Local, GitHub, and Google OAuth)
-- Lesson Progress Tracking
-- Homework Management and Tracking
-- Community Resources and Downloadable Materials
-- Responsive Design with Tailwind CSS
-- Interactive Dashboard
-- Multiple Authentication Strategies
+- Interactive Lesson Tracking
+- Homework Management System
+- Resource Library
+- User Dashboard
+- Community Projects Showcase
 
 ## 🗂️ Repository Structure
 
 ### Main Directories
 - `src/`: Core application source code
   - `assets/`: Static assets (CSS, JS, images)
-  - `config/`: Configuration files for database and authentication
-  - `controllers/`: Business logic and request handling
-  - `middleware/`: Custom Express middleware
+  - `config/`: Configuration files for database, authentication
+  - `controllers/`: Business logic handlers
+  - `middleware/`: Express middleware
   - `models/`: Mongoose data models
   - `routes/`: Express route definitions
   - `views/`: Pug template files
 
 ### Key Files
-- `src/server.js`: Main application entry point
+- `server.js`: Main application entry point
 - `package.json`: Project configuration and dependencies
-- `cypress.config.js`: End-to-end testing configuration
 - `.env.example`: Environment variable template
+- `cypress.config.js`: End-to-end testing configuration
 - `tailwind.config.cjs`: Tailwind CSS configuration
 
-## 🔧 Technical Details
+## 🛠️ Technologies Used
 
-### Technologies Used
-- **Backend**: 
-  - Node.js
-  - Express.js
-  - MongoDB (Mongoose)
-- **Frontend**:
-  - Pug (Template Engine)
-  - Tailwind CSS
-  - Vanilla JavaScript
-- **Authentication**:
-  - Passport.js
-  - OAuth (GitHub, Google)
-- **Testing**:
-  - Cypress (E2E Testing)
-  - Jest (Unit Testing)
+### Backend
+- Node.js
+- Express.js
+- MongoDB (Mongoose)
+- Passport.js (Authentication)
 
-### Architecture
-- **MVC Pattern**
-  - Models: Define data schemas and interactions
-  - Views: Pug templates for rendering
-  - Controllers: Handle request processing
-- **Middleware-based Authentication**
-- **Modular Route Handling**
+### Frontend
+- Pug (Template Engine)
+- Tailwind CSS
+- Vanilla JavaScript
+
+### Testing
+- Cypress (E2E Testing)
+- Jest (Unit Testing)
+
+### Authentication Providers
+- Local Strategy
+- GitHub OAuth
+- Google OAuth
 
 ## 🚀 Setup and Deployment
 
 ### Prerequisites
-- Node.js (v16+)
+- Node.js (v18+)
 - MongoDB
 - npm or yarn
 
-### Installation
+### Local Development
 1. Clone the repository
    ```bash
-   git clone https://github.com/labrocadabro/node-mongo-boilerplate.git
-   cd node-mongo-boilerplate
+   git clone https://github.com/yourusername/community-taught.git
+   cd community-taught
    ```
 
 2. Install dependencies
@@ -77,46 +72,47 @@ Community Taught is a comprehensive web application designed to support learning
    npm install
    ```
 
-3. Create a `.env` file based on `.env.example`
-   - Add MongoDB connection string
-   - Configure OAuth credentials
-   - Set session secrets
+3. Set up environment variables
+   - Copy `.env.example` to `.env`
+   - Fill in necessary credentials (MongoDB URI, OAuth keys)
 
-### Running the Application
-- Development Mode
-  ```bash
-  npm run dev
-  ```
-- Production Start
-  ```bash
-  npm start
-  ```
+4. Start development server
+   ```bash
+   # Run server with hot-reloading
+   npm run dev
 
-### Environment Configuration
-- `NODE_ENV`: Application environment
-- `MONGODB_URI`: MongoDB connection string
-- `SESSION_SECRET`: Session encryption key
-- OAuth Client IDs and Secrets for GitHub/Google
+   # Compile Tailwind CSS
+   npm run css
+   ```
 
-## 🧪 Testing
-- Run E2E Tests
-  ```bash
-  npm run e2e
-  ```
-- Watch E2E Tests
-  ```bash
-  npm run e2e:watch
-  ```
+### Configuration Options
+- Modify `.env` for:
+  - Database connection
+  - OAuth client credentials
+  - Session secrets
+  - Email configurations
+
+### Testing
+```bash
+# Run E2E tests
+npm run e2e
+
+# Watch E2E tests
+npm run e2e:watch
+```
+
+## 🔐 Authentication Flows
+1. Local Registration/Login
+2. GitHub OAuth Login
+3. Google OAuth Login
+4. Password Reset Mechanism
+
+## 📦 Deployment
+- Configured for platforms like Fly.io (see `fly.toml`)
+- Supports environment-specific configurations
 
 ## 🤝 Contributing
 Please read `CONTRIBUTING.md` for details on our code of conduct and the process for submitting pull requests.
 
 ## 📄 License
 This project is licensed under the MIT License - see the `LICENSE` file for details.
-
-## 🙌 Acknowledgments
-- Community Taught Team
-- Open Source Contributors
-
-## 📞 Support
-For issues or questions, please [open an issue](https://github.com/labrocadabro/node-mongo-boilerplate/issues) on GitHub.
