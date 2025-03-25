@@ -1,120 +1,103 @@
 # Community Taught Web Application
 
-## 🌟 Project Overview
+## Project Overview
 
-Community Taught is a comprehensive web application designed to support learning and collaboration for a community-driven educational platform. It provides an interactive environment for users to track lessons, manage homework, and engage with educational resources.
+Community Taught is a comprehensive web application designed to support learning and collaboration within a community-driven educational platform. The application provides features for tracking lessons, managing homework, and facilitating user interactions.
 
 ### Key Features
-- User Authentication (Local, Google, and GitHub)
-- Lesson Tracking and Progress Management
-- Homework Assignment and Tracking
-- Community Resources and Downloads
+- User Authentication (Local, Google, GitHub)
+- Lesson Tracking and Progress Monitoring
+- Homework Management
+- Resource Sharing
+- Community Projects Dashboard
 - Responsive Design with Tailwind CSS
-- Secure Session Management
 
-## 🗂️ Repository Structure
+## Repository Structure
 
 ### Main Directories
 - `src/`: Core application source code
   - `assets/`: Static assets (CSS, JS, images)
-  - `config/`: Configuration files for database and authentication
+  - `config/`: Configuration files for databases and authentication
   - `controllers/`: Request handling logic
   - `middleware/`: Express middleware
   - `models/`: Mongoose data models
-  - `routes/`: Application route definitions
+  - `routes/`: Express route definitions
   - `views/`: Pug template files
 - `cypress/`: End-to-end testing configuration
 - `data/`: JSON data files for lessons and homework
 - `src/config/`: Authentication and database configurations
 
 ### Key Files
-- `server.js`: Main application entry point
 - `package.json`: Project dependencies and scripts
+- `src/server.js`: Main server entry point
 - `.env.example`: Environment configuration template
-- `tailwind.config.cjs`: Tailwind CSS configuration
-- `cypress.config.js`: Cypress testing configuration
+- `fly.toml`: Deployment configuration for Fly.io
 
-## 🔧 Technical Details
+## Technical Details
 
 ### Technologies Used
 - **Backend**: Node.js, Express.js
-- **Database**: MongoDB (Mongoose)
+- **Database**: MongoDB (Mongoose ORM)
 - **Frontend**: Pug templating, Tailwind CSS
-- **Authentication**: Passport.js (Local, Google, GitHub)
+- **Authentication**: Passport.js (Local, Google, GitHub strategies)
 - **Testing**: Cypress (E2E), Jest
-- **Deployment**: Fly.io (based on `fly.toml`)
+- **Deployment**: Fly.io
 
 ### Architecture
-- **MVC (Model-View-Controller)** design pattern
-- **RESTful API** design
-- **OAuth 2.0** for third-party authentication
-- **Server-side rendering** with Pug templates
+- **MVC Architecture**
+  - Models: Mongoose schemas for data structure
+  - Views: Pug templates for rendering
+  - Controllers: Business logic and request handling
+- **Authentication**
+  - Multiple login strategies
+  - Session-based authentication
+- **Responsive Design**
+  - Mobile-friendly UI using Tailwind CSS
 
-## 🚀 Setup and Deployment
+## Setup and Deployment
 
 ### Prerequisites
-- Node.js (18.x recommended)
+- Node.js (v16+)
 - MongoDB
-- Git
+- npm or yarn
 
 ### Local Development Setup
 1. Clone the repository
-   ```bash
-   git clone https://github.com/labrocadabro/node-mongo-boilerplate.git
-   cd node-mongo-boilerplate
-   ```
-
-2. Install dependencies
+2. Install dependencies:
    ```bash
    npm install
    ```
+3. Create `.env` file based on `.env.example`
+4. Configure environment variables:
+   - `PORT`: Application port
+   - `DB_URI`: MongoDB connection string
+   - `SECRET`: Session secret
+   - Authentication credentials for Google/GitHub
 
-3. Configure environment variables
-   - Copy `.env.example` to `.env`
-   - Fill in required configuration:
-     - `PORT`
-     - `DB_URI`
-     - Authentication credentials
-     - SMTP settings (optional)
-
-4. Run the application
-   ```bash
-   # Development mode
-   npm run dev
-
-   # Production mode
-   npm start
-   ```
-
-### Environment Configuration
-See `.env.example` for detailed configuration options:
-- Database connection
-- Authentication providers
-- SMTP settings
-- Session management
-
-## 🧪 Testing
-
-### End-to-End Testing
-- Powered by Cypress
-- Run tests with:
+### Running the Application
+- Development mode:
   ```bash
-  npm run e2e           # Run in Chrome
-  npm run e2e:watch     # Interactive mode
+  npm run dev
+  ```
+- Production mode:
+  ```bash
+  npm start
   ```
 
-### Available Test Suites
-- Authentication
-- Basic page rendering
-- Homework tracking
-- Lesson management
+### Environment Configuration
+- `NODE_ENV`: Set to `development` or `production`
+- Configure SMTP for email functionality
+- Set up OAuth credentials for Google/GitHub login
 
-## 🤝 Contributing
+### Testing
+- End-to-end testing with Cypress:
+  ```bash
+  npm run e2e       # Run tests
+  npm run e2e:watch # Interactive test mode
+  ```
+
+## Contributing
 Please read `CONTRIBUTING.md` for details on our code of conduct and the process for submitting pull requests.
 
-## 📜 License
+## License
 This project is licensed under the MIT License - see the `LICENSE` file for details.
-
-## 🙌 Acknowledgments
-- Community contributors
-- Open-source libraries and tools used
