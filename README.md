@@ -1,63 +1,57 @@
 # Community Taught Web Application
 
-## 🌟 Project Overview
+## 📘 Project Overview
 
-Community Taught is a comprehensive web application designed to facilitate learning, track progress, and provide resources for a coding education community. Built with a modern, modular architecture, the platform offers an interactive and user-friendly experience for learners.
+Community Taught is a comprehensive web application designed to facilitate learning, track progress, and provide resources for a community-driven educational platform. Built with a modern, scalable architecture, the application offers features for lesson tracking, homework management, and user authentication.
 
-### Key Features
-- User Authentication (Local, GitHub, and Google OAuth)
-- Lesson Tracking and Progress Management
-- Homework Assignment and Tracking
-- Resource Library
-- Community Project Showcase
-- Responsive Design with Tailwind CSS
+### 🌟 Key Features
+- User authentication (Local, Google, and GitHub)
+- Lesson progression tracking
+- Homework management and tracking
+- Resource sharing and community projects
+- Responsive design with Tailwind CSS
+- Secure session management
 
 ## 🗂️ Repository Structure
 
 ### Main Directories
-- `src/`: Core application source code
-  - `assets/`: Static resources (CSS, JS, images)
-  - `config/`: Configuration files for database and authentication
-  - `controllers/`: Request handling logic
-  - `middleware/`: Express middleware
-  - `models/`: Mongoose data models
-  - `routes/`: Application route definitions
-  - `views/`: Pug template files
-- `cypress/`: End-to-end testing configurations and specs
-- `data/`: Static JSON data files
-- `src/assets/`: Frontend assets
+- `/src`: Core application source code
+  - `/assets`: Static assets (CSS, JS, images)
+  - `/config`: Configuration files for database, authentication
+  - `/controllers`: Request handling logic
+  - `/middleware`: Express middleware
+  - `/models`: Mongoose data models
+  - `/routes`: Application route definitions
+  - `/views`: Pug template files
+- `/cypress`: End-to-end testing files
+- `/data`: JSON data files for lessons and homework
+- `/src/config`: Authentication and database configurations
 
 ### Key Files
-- `src/server.js`: Express application entry point
-- `package.json`: Project configuration and dependencies
+- `server.js`: Main application entry point
+- `package.json`: Project dependencies and scripts
 - `.env.example`: Environment configuration template
-- `cypress.config.js`: Cypress testing configuration
 - `tailwind.config.cjs`: Tailwind CSS configuration
+- `fly.toml`: Deployment configuration for Fly.io
 
 ## 🔧 Technical Details
 
 ### Technologies Used
-- **Backend**: 
-  - Node.js
-  - Express.js
-  - MongoDB
-  - Mongoose
-- **Frontend**:
-  - Pug templating engine
-  - Tailwind CSS
-  - Vanilla JavaScript
-- **Authentication**:
-  - Passport.js
-  - OAuth (GitHub, Google)
-- **Testing**:
-  - Cypress (E2E testing)
-  - Jest (Unit testing)
+- **Backend**: Node.js, Express.js
+- **Frontend**: Pug templating, Tailwind CSS
+- **Database**: MongoDB (Mongoose ODM)
+- **Authentication**: Passport.js (Local, Google, GitHub strategies)
+- **Testing**: Cypress (E2E), Jest
+- **Deployment**: Fly.io compatible
 
 ### Architecture Overview
-- **MVC (Model-View-Controller)** architectural pattern
-- RESTful API design
-- Session-based authentication
-- Modular and scalable code structure
+- **MVC Architecture**
+  - Models: Mongoose schemas for data
+  - Views: Pug templates
+  - Controllers: Business logic and request handling
+- **Authentication Middleware**
+- **Session Management**
+- **OAuth Integration**
 
 ## 🚀 Setup and Deployment
 
@@ -78,16 +72,17 @@ Community Taught is a comprehensive web application designed to facilitate learn
    npm install
    ```
 
-3. Create `.env` file
+3. Configure environment variables
    - Copy `.env.example` to `.env`
-   - Fill in required environment variables
-     - MongoDB connection string
-     - OAuth client credentials
-     - Session secrets
+   - Fill in required configurations:
+     - `PORT`: Development server port
+     - `DB_URI`: MongoDB connection string
+     - `SECRET`: Session secret
+     - OAuth credentials (optional)
 
-4. Run development server
+4. Start development server
    ```bash
-   # Start server with nodemon
+   # Run server with hot-reload
    npm run dev
 
    # Compile Tailwind CSS
@@ -95,48 +90,42 @@ Community Taught is a comprehensive web application designed to facilitate learn
    ```
 
 ### Configuration Options
-- Modify `src/config/` files for database and authentication settings
-- Adjust Tailwind configuration in `tailwind.config.cjs`
-- Customize environment variables in `.env`
+- `.env` file supports various configurations:
+  - Database connection
+  - SMTP settings
+  - OAuth provider credentials
+  - Session management
 
-### Testing
+### Running Tests
 ```bash
 # Run E2E tests
 npm run e2e
 
-# Open Cypress interactive mode
+# Watch E2E tests
 npm run e2e:watch
 ```
 
-## 🧪 User Flows
+## 🔐 Authentication Flows
+- Local registration/login
+- Google OAuth login
+- GitHub OAuth login
+- Secure session management
+- Password reset functionality
 
-### Authentication
-- Register with email or OAuth providers
-- Login/Logout functionality
-- Password reset
-- Profile management
-
-### Learning Management
-- Browse and track lessons
-- Mark lessons as complete
-- Submit and track homework assignments
-- View progress dashboards
-
-### Resources
-- Access community projects
-- Download learning materials
-- View FAQ and additional resources
+## 📦 Deployment
+- Configured for Fly.io deployment
+- Environment-aware configuration
+- Production-ready setup
 
 ## 🤝 Contributing
-Please read `CONTRIBUTING.md` for details on our code of conduct and the process for submitting pull requests.
+See `CONTRIBUTING.md` for contribution guidelines.
 
 ## 📄 License
-This project is licensed under the MIT License - see the `LICENSE` file for details.
+MIT License - See `LICENSE` file for details.
 
-## 🙌 Acknowledgments
-- Open-source community
-- Contributors and supporters
+## 🔗 Resources
+- [Project Homepage](https://github.com/labrocadabro/node-mongo-boilerplate)
+- [Issue Tracker](https://github.com/labrocadabro/node-mongo-boilerplate/issues)
 
----
-
-**Happy Coding!** 🚀👩‍💻👨‍💻
+## 👥 Author
+Laura Abro
