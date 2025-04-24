@@ -1,332 +1,240 @@
-# CommunityTaught: An MVC Educational Management Platform
+# CommunityTaught: An Educational Platform Boilerplate for Node.js and MongoDB
 
 ## Project Overview
 
-The **CommunityTaught** project is an MVC application designed for managing educational content, specifically tailored for lessons and homework assignments. It serves as a platform where users can add, track, and complete lessons and homework, enhancing educational management and tracking.
+The codebase is an educational platform named 'CommunityTaught' designed to facilitate learning and community engagement around coding and related topics. It serves as an MVC boilerplate for Node.js and MongoDB projects, incorporating Tailwind CSS for styling and Pug for templating.
 
 ### Main Purpose and Problems Solved
-- **Educational Management**: Provides a structured way to manage lessons and homework, allowing users to add new content, track progress, and mark completion.
-- **User Authentication**: Implements robust user authentication using Passport, supporting local, GitHub, and Google OAuth, ensuring secure access to personal educational data.
+- **Educational Platform**: Provides a structured environment for users to learn through lessons and homework assignments.
+- **Community Engagement**: Encourages user interaction through features like community projects and resources.
+- **Authentication**: Offers secure user authentication via Passport, including local, Google, and GitHub OAuth.
 
 ### Key Features and Benefits
-- **Lesson and Homework Management**: Users can add lessons and homework, with detailed tracking of progress and completion.
-- **User Interface**: Utilizes Tailwind CSS for responsive design and Pug for templating, ensuring a user-friendly interface.
-- **Database Integration**: Uses MongoDB for data persistence, allowing for scalable storage of educational data.
-- **Email Notifications**: Includes functionality for sending emails, useful for reminders or notifications about educational tasks.
-- **Testing and Development**: Supports end-to-end testing with Cypress, facilitating robust development and maintenance of the application.
+- **User Management**: Supports user registration, login, password reset, and account management.
+- **Lesson and Homework Tracking**: Allows users to track their progress on lessons and homework, enhancing the learning experience.
+- **Resource Sharing**: Includes a section for sharing resources like community projects, downloads, and FAQs.
+- **Responsive Design**: Utilizes Tailwind CSS for a modern, responsive user interface.
+- **Extensibility**: As a boilerplate, it provides a foundation that can be extended for various educational or community-driven projects.
 
 ## Getting Started, Installation, and Setup
 
 ### Quick Start Guide
-
-To quickly get started with CommunityTaught, follow these steps:
-
-1. **Clone the Repository**: If you haven't already, clone the repository to your local machine.
-   ```bash
-   git clone https://github.com/labrocadabro/node-mongo-boilerplate.git
-   ```
-
-2. **Install Dependencies**: Navigate to the project directory and install the necessary dependencies.
-   ```bash
-   cd node-mongo-boilerplate
-   npm install
-   ```
-
-3. **Set Up Environment Variables**: Copy the `.env.example` file to `.env` and fill in the required values.
-   ```bash
-   cp .env.example .env
-   ```
-
-4. **Run the Application**: Start the application in development mode.
-   ```bash
-   npm run dev
-   ```
-
-5. **Access the Application**: Open your web browser and navigate to `http://localhost:3000` to use the application.
+To get started with CommunityTaught, follow these steps:
+1. **Clone the Repository**: Clone the repository to your local machine.
+2. **Install Dependencies**: Run `npm install` or `yarn install` to install all necessary dependencies.
+3. **Set Up Environment Variables**: Copy `.env.example` to `.env` and fill in the required values.
+4. **Start the Application**: Use `npm run dev` or `yarn dev` to start the application in development mode.
 
 ### Installation
+To install CommunityTaught, you need to have Node.js and npm or Yarn installed on your system. Follow these steps:
 
-To install CommunityTaught, ensure you have Node.js and npm installed on your system. Then follow these steps:
+#### Dependencies
+- **Node.js**: Version 14 or higher
+- **npm**: Version 6 or higher (or Yarn)
 
-1. **Install Node.js and npm**: If not already installed, download and install Node.js from the official website. npm comes bundled with Node.js.
-
-2. **Install Project Dependencies**: From the project root directory, run:
-   ```bash
-   npm install
-   ```
-   This command will install all dependencies listed in `package.json`, including:
-   - Express for the web framework
-   - Mongoose for MongoDB interactions
-   - Pug for templating
-   - Tailwind CSS for styling
-   - Passport for authentication
-
-3. **Set Up MongoDB**: Ensure you have MongoDB installed and running. Update the MongoDB connection string in your `.env` file.
-
-4. **Configure Authentication**: Set up OAuth credentials for GitHub and Google in your `.env` file if you want to use these authentication methods.
+#### Installation Steps
+1. **Install Node.js and npm**: Download and install from the official Node.js website if not already installed.
+2. **Clone the Repository**: `git clone <repository-url>`
+3. **Navigate to the Project Directory**: `cd communitytaught`
+4. **Install Dependencies**: `npm install` or `yarn install`
 
 ### Setup
-
-To set up the project for development or production:
+To set up CommunityTaught for development or production, follow these steps:
 
 #### Development Setup
-
-- **Start Development Server**: Use the following command to start the server with live reload:
-  ```bash
-  npm run dev
-  ```
-  This uses `nodemon` to watch for changes in the server files, excluding JavaScript files in `src/assets/js` and `cypress` directories.
-
-- **Compile CSS**: Run Tailwind CSS in watch mode to automatically compile CSS changes:
-  ```bash
-  npm run css
-  ```
+1. **Environment Variables**: Create a `.env` file from `.env.example` and set the necessary environment variables.
+2. **Start Development Server**: Run `npm run dev` or `yarn dev` to start the server with Nodemon for live reloading.
+3. **CSS Watching**: Run `npm run css` or `yarn css` in a separate terminal to watch and compile CSS changes.
 
 #### Production Setup
+1. **Build for Production**: Run `npm run build` or `yarn build` to build the project for production (if applicable, though no specific build script is provided in the current package.json).
+2. **Start Production Server**: Run `npm start` or `yarn start` to start the server in production mode.
 
-- **Build for Production**: Although not explicitly defined in the scripts, you can prepare for production by ensuring all dependencies are installed and environment variables are set correctly. Then, start the server with:
-  ```bash
-  npm start
-  ```
+#### Platform-Specific Instructions
+- **Windows**: Ensure you have Git Bash or a similar environment to run npm scripts.
+- **MacOS/Linux**: No specific instructions beyond standard Node.js and npm setup.
 
-- **Deployment**: The project includes a `fly.toml` file, suggesting it can be deployed on Fly.io. Follow Fly.io's documentation for deploying Node.js applications.
-
-Remember, for detailed usage instructions, refer to the Usage Examples section of this README.
+Note: This project uses MongoDB as the database, ensure you have MongoDB installed and running.
 
 ## Features / Capabilities
 
-### Core Features
+### Core Features and Components
 
-- **User Authentication**: The project supports user authentication through local login, Google, and GitHub OAuth, managed via Passport.js. Users can register, log in, reset passwords, and manage their account settings.
+#### User Authentication
+- **Login/Register**: Users can log in or register using local credentials or through OAuth with Google and GitHub.
+- **Password Management**: Users can change their passwords, reset forgotten passwords, and manage their account settings.
 
-- **Lesson Management**: Administrators can add, edit, or delete lessons. Each lesson can be associated with specific class numbers, due dates, and includes features like video integration, slides, and timestamps. Users can track their progress on lessons, marking them as watched or checked in.
+#### Homework Management
+- **Add/Edit Homework**: Administrators can add or edit homework assignments, including due dates, descriptions, and requirements.
+- **Track Homework Progress**: Users can track their progress on homework items, mark items as completed, and submit homework.
+- **Import Data**: Users can import homework progress data, which can be used to update their current status.
 
-- **Homework Management**: The system allows for the creation, editing, and deletion of homework assignments. Homework can be assigned to specific classes, with due dates and submission status tracking. Users can mark homework items and extras as completed.
+#### Lesson Management
+- **Add/Edit Lessons**: Administrators can add or edit lessons, including video details, slides, materials, and check-in information.
+- **Track Lesson Progress**: Users can track their progress on lessons, mark them as watched, and check in for attendance.
+- **View Lessons**: Users can view all lessons or specific lessons by permalink, with navigation to next and previous lessons.
 
-- **Progress Tracking**: Users can track their progress on both lessons and homework. This includes marking lessons as watched or checked in, and toggling the status of homework items, extras, and submissions.
+#### Resources
+- **Resource Pages**: Users can access various resource pages, including community projects, downloads, FAQ, and more.
 
-- **Data Import**: Administrators can import data to update user progress on lessons and homework, which can be useful for migrating data or setting up initial states.
-
-- **Resource Access**: Users have access to various resources, including community projects, downloads, FAQs, and other educational materials.
+#### Additional Features
+- **Session Management**: Utilizes MongoDB for session storage to maintain user sessions.
+- **Error Handling**: Includes 404 error pages and flash messages for user feedback.
+- **Static File Serving**: Serves static files from the assets directory.
 
 ### Examples and Configurations
 
-- **Lesson Example**: A lesson might include a video ID, a title, associated class numbers, and due dates. Users can view lessons, see related homework, and track their progress.
+#### Homework Configuration Example
+- **File**: `src/controllers/homework.js`
+- **Example**: The `addEditHomework` function allows administrators to add or edit homework with various parameters like due dates, descriptions, and required items.
 
-- **Homework Example**: Homework assignments can be configured with descriptions, due dates, and whether they are required or optional. Users can mark items as done and submit their work.
+```javascript
+const hwData = {
+	classNo: req.body.number.split(","),
+	dueNo: req.body.due,
+	submit: req.body.submit,
+	cohort: req.body.cohort,
+	note: req.body.note,
+	items: items,
+	extras: extras
+}
+await Homework.findByIdAndUpdate(req.params.id  || mongoose.Types.ObjectId(), hwData, { upsert: true});
+```
 
-- **Authentication Configuration**: The project uses environment variables for sensitive information like session secrets and database URIs, ensuring secure configuration management.
+#### Lesson Configuration Example
+- **File**: `src/controllers/lessons.js`
+- **Example**: The `addEditLesson` function enables administrators to manage lesson details, including video IDs, dates, and materials.
+
+```javascript
+const lessonData = {
+	videoId: req.body.videoId,
+	twitchVideo: !!req.body.twitch ? true : false,
+	title: req.body.videoTitle,
+	dates: dates,
+	permalink: req.body.permalink,
+	thumbnail: req.body.thumbnail,
+	classNo: req.body.number ? req.body.number.split(",") : [],
+	slides: req.body.slides ? req.body.slides.split(",") : [],
+	materials: req.body.materials,
+	checkin: req.body.checkin ? req.body.checkin.split(",") : [],
+	motivationLink: req.body.motivationLink,
+	motivationTitle: req.body.motivationTitle,
+	cohort: req.body.cohort,
+	note: req.body.note,
+	timestamps: timestamps,
+};
+const lesson = await Lesson.findByIdAndUpdate(
+	req.params.id || mongoose.Types.ObjectId(),
+	lessonData,
+	{ upsert: true, new: true }
+);
+```
+
+These examples demonstrate how the system handles core functionalities like homework and lesson management, ensuring users can interact with the platform effectively.
 
 ## Technologies Used
 
-### Languages
-- JavaScript
+- **Node.js**: Used as the runtime environment for the server-side application.
+- **Express.js**: Framework for building the web application.
+- **MongoDB**: Database used for data storage, with Mongoose as the ODM.
+- **Pug**: Templating engine for rendering views.
+- **Tailwind CSS**: Utility-first CSS framework for styling.
+- **Passport.js**: Authentication middleware for Node.js.
+- **Cypress**: End-to-end testing framework.
+- **Nodemailer**: Library for sending emails.
+- **Dotenv**: Manages environment variables.
+- **Validator**: Library for data validation.
 
-### Frameworks and Libraries
-- **Node.js**: Used as the runtime environment for the server-side JavaScript.
-- **Express.js**: A fast and minimalist web framework for Node.js, used for building the web application.
-- **Mongoose**: An ODM (Object Data Modeling) library for MongoDB and Node.js, used for database interactions.
-- **Pug**: A templating engine for generating HTML markup, used for rendering views.
-- **Tailwind CSS**: A utility-first CSS framework, used for styling the application.
-- **Passport.js**: An authentication middleware for Node.js, used for handling user authentication.
-- **Cypress**: A JavaScript end-to-end testing framework, used for testing the application.
-
-### Database
-- **MongoDB**: A NoSQL database used for storing application data.
-
-### Authentication
-- **GitHub OAuth**: Used for user authentication via GitHub.
-- **Google OAuth**: Used for user authentication via Google.
-
-### Other Tools
-- **Nodemon**: A utility that monitors for any changes in the source code and automatically restarts the server.
-- **Morgan**: An HTTP request logger middleware for Node.js.
-- **Nodemailer**: A module for sending emails from Node.js.
-- **Validator**: A library for string validation and sanitization.
+### Frontend Technologies
+- **JavaScript**: Primary language for client-side scripting.
+- **CSS**: Used for styling, with Tailwind CSS as the framework.
 
 ## Usage Examples
 
-### Running the Application
+### Basic Navigation
+To navigate through the website, use the following routes:
+- **Home Page**: `/`
+- **About Page**: `/about`
+- **Dashboard**: `/dashboard`
+- **Account**: `/account`
 
-To start the application in production mode, use the following command:
+### User Authentication
+For user authentication, you can use these endpoints:
+- **Register**: `POST /register`
+- **Login**: `POST /login`
+- **Logout**: `GET /logout`
+- **Forgot Password**: `GET /forgot`
+- **Reset Password**: `GET /reset` and `POST /reset`
+- **Change Password**: `POST /change-password`
+- **Set Password**: `POST /set-password`
+- **Change Email**: `POST /change-email`
+- **Delete Account**: `DELETE /delete-account`
+- **Verify Account**: `GET /verify`
 
-```bash
-npm start
-```
+### Accessing Resources
+To access different resources, use:
+- **Resources**: `/resources`
+- **Specific Resource Page**: `/resources/:page`
 
-For development, you can run the application with live reloading using:
-
-```bash
-npm run dev
-```
-
-### Building CSS
-
-To build and watch for changes in CSS, use:
-
-```bash
-npm run css
-```
-
-### Running End-to-End Tests
-
-To run end-to-end tests, you can use:
-
-```bash
-npm run e2e
-```
-
-For interactive testing, use:
-
-```bash
-npm run e2e:watch
-```
-
-To record test results, you can run:
-
-```bash
-npm run e2e:record
-```
-
-### Cypress Commands
-
-Cypress provides additional commands for managing its environment:
-
-- Verify Cypress installation:
-  ```bash
-  npm run cy:verify
-  ```
-
-- Get Cypress information:
-  ```bash
-  npm run cy:info
-  ```
-
-- Check Cypress version:
-  ```bash
-  npm run cy:version
-  ```
-
-- List Cypress cache:
-  ```bash
-  npm run cy:cache:list
-  ```
+These examples demonstrate how to interact with the core functionalities of the application.
 
 ## Project Structure
 
 ### Key Directories
 
-- **cypress**: Contains end-to-end tests for the application, including authentication, basic pages, homework, lessons, and mobile menu functionality.
+- **cypress**: Contains end-to-end tests for the application, including authentication, basic pages, homework, lessons, mobile menu, and resources.
+
 - **data**: Stores JSON files for homework and lessons data.
+
 - **src**: The main source directory, containing:
-  - **assets**: CSS, fonts, images, and JavaScript files for the frontend.
+  - **assets**: CSS, JavaScript, fonts, images, and other static assets.
   - **config**: Configuration files for database and authentication.
-  - **controllers**: Server-side logic for handling requests related to authentication, email, homework, lessons, and pages.
+  - **controllers**: Handles logic for authentication, email, homework, lessons, and pages.
   - **middleware**: Middleware for authentication and flash messages.
-  - **models**: Database models for various entities like Homework, Lessons, and User.
-  - **routes**: Defines routes for different functionalities like email, homework, lessons, and main routes.
+  - **models**: Defines database models for various entities like Homework, Lessons, and Users.
+  - **routes**: Defines routes for email, homework, lessons, main, and OAuth.
   - **server.js**: The main server file.
-  - **views**: Pug templates for rendering different pages of the application.
+  - **views**: Pug templates for rendering views, including layouts, mixins, and partials.
 
 ### Key Files
 
-- **.env.example**: Example environment variables file.
-- **.gitignore**: Specifies intentionally untracked files to ignore.
+- **.env.example**: Example environment configuration file.
+- **.gitignore**: Specifies files to be ignored by Git.
 - **CONTRIBUTING.md**: Guidelines for contributing to the project.
-- **LICENSE**: The license under which the project is released.
+- **LICENSE**: The license file for the project.
 - **README.md**: The main README file for the project.
-- **package.json**: Lists the project's dependencies and scripts.
+- **package.json**: Manages dependencies and scripts for the project.
+- **tailwind.config.cjs**: Configuration for Tailwind CSS.
 - **yarn.lock**: Lock file for Yarn package manager.
-- **fly.toml**: Configuration file for deploying the application on Fly.io.
-
-## Additional Notes
-
-### Additional Notes
-
-#### Project Architecture
-The project follows an MVC (Model-View-Controller) architecture, utilizing Node.js with Express as the server framework, MongoDB for database management, and Pug for templating. The application uses Passport for authentication, supporting local, Google, and GitHub OAuth strategies.
-
-#### Development Environment
-- **Node.js**: The project is built using Node.js, with the main server file located at `src/server.js`.
-- **Tailwind CSS**: Used for styling, with configuration in `tailwind.config.cjs` and the CSS file at `src/tailwind.css`.
-- **Pug**: Templating engine for rendering views, with views located in `src/views`.
-
-#### Testing
-The project includes end-to-end testing with Cypress, configured in `cypress.config.js`. Various scripts are available for running tests in different browsers and recording results.
-
-#### Deployment
-The project can be deployed using Fly.io, as indicated by the presence of `fly.toml`. Ensure to configure environment variables appropriately for production.
-
-#### Security
-- **Session Management**: Uses MongoDB to store sessions, enhancing security by not storing session data in memory.
-- **Authentication**: Implements secure authentication methods with Passport, including session management and OAuth.
-
-#### Data Management
-- **MongoDB**: The database is managed with Mongoose, with models defined in `src/models`.
-- **Data Import**: A script for importing data is available at `src/config/importData.js`.
-
-#### Frontend
-- **JavaScript**: Client-side scripts are located in `src/assets/js`, handling various functionalities like accordion, account management, and homework tracking.
-- **Assets**: The project includes numerous assets like images, fonts, and CSS files, organized in `src/assets`.
-
-#### Backend
-- **Express Routes**: Routes are organized into different files under `src/routes`, handling main, email, OAuth, lesson, and homework functionalities.
-- **Controllers**: Logic for handling requests is managed in `src/controllers`.
-
-#### Middleware
-- **Authentication**: Middleware for authentication is defined in `src/middleware/auth.js`.
-- **Flash Messages**: Handled by `src/middleware/flash.js` for user feedback.
-
-#### Version Control
-The project uses Git for version control, with the repository hosted on GitHub.
-
-#### License
-The project is licensed under the MIT License, as specified in `LICENSE`.
-
-#### Contact
-For any issues or contributions, please refer to the `CONTRIBUTING.md` and reach out via the project's GitHub page.
-
 
 ## Contributing
 
-Thank you for your interest in contributing to this project! Here's how you can contribute:
+### How to Contribute
 
-### Finding an Issue
+To contribute to this project, follow these steps:
 
-- Look through the [issues tab](https://github.com/labrocadabro/communitytaught/issues) to find an issue you're interested in. Add a note asking to work on the issue.
-- If you want to make a change not related to a current issue, [create a new issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-an-issue) explaining your proposed change and its rationale.
+1. **Find an Issue**: Look through the [issues tab](https://github.com/labrocadabro/communitytaught/issues) and find one that interests you. If you want to propose a new change, [create an issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-an-issue) explaining your proposed change.
 
-### Getting Assigned
+2. **Wait to be Assigned**: Once you've found an issue, wait for it to be assigned to you to avoid duplication of effort.
 
-- Wait to be assigned to an issue to avoid duplication of effort and ensure coordination.
+3. **Fork the Repository**: [Fork the repository](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) to start working on your contribution.
 
-### Forking the Repository
+4. **Create a Branch**: Create a new branch named with the issue number and a brief description, e.g., `issue-1-lesson-card-styling`. Ensure each branch is created from the main branch.
 
-- Once assigned, [fork the repository](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo).
+5. **Make Changes**: Implement the necessary changes on your branch. If you encounter unrelated issues, create a new issue for those changes.
 
-### Creating a Branch
+6. **Create a Pull Request**: [Create a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) with a detailed explanation of your changes and any deviations from the original issue. [Link the pull request to its issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue).
 
-- Create a branch with the issue number and a short description of your work, e.g., `issue-1-lesson-card-styling`. Ensure each branch is created off the main branch, not from another issue branch.
+7. **Make Requested Changes**: Reviewers may request changes. Make these changes and resubmit your pull request.
 
-### Making Changes
+8. **Celebrate**: Once your pull request is accepted, celebrate your contribution to Community Taught!
 
-- Make the necessary changes on your new branch. If you encounter unrelated changes, create a new issue for those.
+### Contribution Guidelines
 
-### Submitting a Pull Request
-
-- After making changes, [create a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request). Explain your changes and any deviations from the original issue, problems encountered, or other important notes.
-- [Link the pull request to its issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue).
-
-### Review and Revisions
-
-- Your pull request will be reviewed. If changes are requested, make them and resubmit your pull request.
-
-### Celebrating Your Contribution
-
-- Congratulations on contributing to the project!
+- **Code Style**: Follow the existing code style in the repository.
+- **Testing**: Ensure your changes pass all existing tests and add new tests if necessary.
+- **Documentation**: Update relevant documentation to reflect your changes.
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
-
-The MIT License is a permissive free software license that allows users to freely use, modify, and distribute the software, subject to the conditions outlined in the license file.
+The project is licensed under the [MIT License](LICENSE).
