@@ -8,7 +8,7 @@
  * @param {string} hex - Hex color code
  * @returns {Array} RGB values
  */
-function hexToRgb(hex) {
+export function hexToRgb(hex) {
   // Remove # if present
   hex = hex.replace(/^#/, '');
   
@@ -26,7 +26,7 @@ function hexToRgb(hex) {
  * @param {Array} rgb - RGB color values
  * @returns {number} Relative luminance
  */
-function calculateRelativeLuminance(rgb) {
+export function calculateRelativeLuminance(rgb) {
   const [r, g, b] = rgb.map(c => {
     c /= 255;
     return c <= 0.03928 
@@ -43,7 +43,7 @@ function calculateRelativeLuminance(rgb) {
  * @param {string} color2 - Second color (hex)
  * @returns {number} Contrast ratio
  */
-function calculateContrastRatio(color1, color2) {
+export function calculateContrastRatio(color1, color2) {
   // Validate input
   if (!color1 || !color2) {
     throw new Error('Both colors must be provided');
@@ -70,7 +70,7 @@ function calculateContrastRatio(color1, color2) {
  * @param {string} background - Background color (hex)
  * @returns {boolean} Whether contrast meets standard
  */
-function meetsContrastStandard(foreground, background) {
+export function meetsContrastStandard(foreground, background) {
   try {
     const contrastRatio = calculateContrastRatio(foreground, background);
     
@@ -82,11 +82,4 @@ function meetsContrastStandard(foreground, background) {
     console.error('Contrast validation error:', error);
     return false;
   }
-}
-
-module.exports = {
-  hexToRgb,
-  calculateRelativeLuminance,
-  calculateContrastRatio,
-  meetsContrastStandard
 };
