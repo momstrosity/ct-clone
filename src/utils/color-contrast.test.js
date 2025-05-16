@@ -1,9 +1,9 @@
-const { 
+import { 
   hexToRgb, 
   calculateRelativeLuminance, 
   calculateContrastRatio, 
   meetsContrastStandard 
-} = require('./color-contrast');
+} from './color-contrast.js';
 
 describe('Color Contrast Utility', () => {
   describe('hexToRgb', () => {
