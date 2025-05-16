@@ -12,7 +12,12 @@ export function hexToRgb(hex) {
   // Remove # if present
   hex = hex.replace(/^#/, '');
   
-  // Handle 3-digit and 6-digit hex codes
+  // Handle 3-digit hex codes by doubling each character
+  if (hex.length === 3) {
+    hex = hex.split('').map(char => char + char).join('');
+  }
+  
+  // Handle 6-digit hex codes
   const bigint = parseInt(hex, 16);
   const r = (bigint >> 16) & 255;
   const g = (bigint >> 8) & 255;
