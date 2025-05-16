@@ -8,7 +8,7 @@ body {
 }
 
 .dark {
-    @apply bg-dark-background-primary text-dark-text-primary;
+    @apply bg-dark-900 text-dark-50;
 }
 
 /* Accessibility and theme transition */
@@ -18,5 +18,5 @@ body, .dark {
 
 /* Ensure elements adapt to dark mode */
 .dark *::selection {
-    @apply bg-dark-accent-secondary text-dark-text-primary;
+    @apply bg-darkMode-accent-secondary text-dark-50;
 }
