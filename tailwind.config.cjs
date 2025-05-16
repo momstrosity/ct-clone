@@ -18,7 +18,7 @@ module.exports = {
                 awesome: ['"Font Awesome 6 Free"'],
             },
             colors: {
-                // Light Mode Color Palette (current twilight palette)
+                // Existing Light Mode Twilight Palette
                 twilight: {
                     50: "#f1f8fa",
                     100: "#E8F3F7",
@@ -31,31 +31,35 @@ module.exports = {
                     800: "#226581",
                     900: "#153f51",
                 },
-                // Dark Mode Color Palette (semantic tokens)
+                // Comprehensive Dark Mode Color Palette
                 dark: {
+                    50: '#f5f5f5',     // Very light gray, almost white
+                    100: '#e9e9e9',    // Light gray
+                    200: '#d9d9d9',    // Lighter medium gray
+                    300: '#c4c4c4',    // Light medium gray
+                    400: '#a3a3a3',    // Medium gray
+                    500: '#858585',    // Medium dark gray
+                    600: '#6b6b6b',    // Dark gray
+                    700: '#4f4f4f',    // Darker gray
+                    800: '#353535',    // Very dark gray
+                    900: '#121212',    // Almost black, deep dark background
+                },
+                // Semantic Dark Mode Colors
+                darkMode: {
                     background: {
-                        primary: '#121212',     // Deep, neutral dark background
-                        secondary: '#1E1E1E',   // Slightly lighter for secondary areas
-                        tertiary: '#2C2C2C',    // Even lighter for tertiary elements
+                        primary: '#121212',    // Deep, neutral dark background
+                        secondary: '#1E1E1E',  // Slightly lighter for secondary areas
+                        tertiary: '#2C2C2C',   // Even lighter for tertiary elements
                     },
                     text: {
-                        primary: '#E0E0E0',    // Light text for primary content
-                        secondary: '#A0A0A0',  // Muted text for secondary content
-                        tertiary: '#6E6E6E',   // Subtle text for less important content
+                        primary: '#E0E0E0',   // Light text for primary content
+                        secondary: '#A0A0A0', // Muted text for secondary content
+                        tertiary: '#6E6E6E',  // Subtle text for less important content
                     },
                     accent: {
-                        primary: '#4A90E2',    // Bright blue for primary accents
-                        secondary: '#5D6D7E',  // Muted blue-gray for secondary accents
-                        highlight: '#3498DB',  // Bright highlight color
-                    },
-                    border: {
-                        primary: '#333333',    // Dark border for primary separations
-                        secondary: '#444444',  // Lighter border for subtle separations
-                    },
-                    interactive: {
-                        default: '#4A90E2',    // Default interactive color
-                        hover: '#5DADE2',      // Hover state interactive color
-                        active: '#2980B9',     // Active state interactive color
+                        primary: '#4A90E2',   // Bright blue for primary accents
+                        secondary: '#5D6D7E', // Muted blue-gray for secondary accents
+                        highlight: '#3498DB', // Bright highlight color
                     },
                 },
             },
