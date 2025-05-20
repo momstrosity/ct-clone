@@ -5,7 +5,8 @@
 	"main": "src/server.js",
 	"type": "module",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
+		"test": "vitest run tests/tailwind-dark-mode.test.js",
+		"test:watch": "vitest watch tests/tailwind-dark-mode.test.js",
 		"start": "node .",
 		"dev": "nodemon . --ignore 'src/assets/js/*.js' --ignore 'cypress/**/*.js' --ignore 'test/**/*.js'",
 		"css": "npx tailwindcss -i ./src/tailwind.css -o ./src/assets/css/index.css --watch",
