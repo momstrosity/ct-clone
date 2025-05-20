@@ -11,7 +11,7 @@ describe('Tailwind Dark Mode Configuration', () => {
         
         // Check dark twilight color palette
         expect(colors['dark-twilight']).toBeDefined();
-        expect(Object.keys(colors['dark-twilight'])).toHaveLength(9);
+        expect(Object.keys(colors['dark-twilight'])).toHaveLength(10);
         
         // Check semantic dark mode colors
         expect(colors['dark-text']).toBeDefined();
