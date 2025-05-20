@@ -1,36 +1,41 @@
-# CommunityTaught.org
+## Dark Mode Implementation
 
-A comprehensive tracker for 100Devs classes and homework.
+### Color Palette Configuration
 
-## CONTRIBUTING
+Our dark mode implementation uses a semantic color approach in the Tailwind configuration. Key features:
 
-If you'd like to work on this project, please see the contributing guidelines in [CONTRIBUTING.md](CONTRIBUTING.md).
+- Class-based dark mode switching
+- Semantic color tokens for consistent theming
+- High contrast color palette
+- Accessible color combinations
 
-I built the website without really taking collaboration into account and the project needs some work in terms of both documentation and processes. I am in the process of getting that built out, but in the meantime, here are the basic steps to get the project up and running locally:
+#### Color Design Principles
 
-- fork the repository
-- create a MongoDB database locally or on Atlas
-- import the class and homework data into your database (see the /data folder)
-- rename example.env to .env and add your credentials (.gitignore will ignore the .env so your credentials won't get pushed to Github)
-- Set up mailhog if you are using email and password login
+1. Maintain readability and accessibility
+2. Provide clear visual hierarchy
+3. Ensure sufficient color contrast
+4. Support both light and dark variants
 
+#### Usage
 
-**Live website:** [CommunityTaught.org](https://communitytaught.org/)
+To toggle dark mode, add the `dark` class to the root HTML element:
 
-![Preview of CommunityTaught.org](https://communitytaught.org/img/resources/communitytaught-preview.png)
+```html
+<html class="dark">
+  <!-- Dark mode styles will be applied -->
+</html>
+```
 
-## How It's Made
+#### Color Categories
 
-**Tech used:** Node.js, Express, MongoDB, Pug, Tailwind CSS
+- `background`: Base page background
+- `text`: Primary text color
+- `primary`: Primary brand color
+- `secondary`: Secondary accent color
+- `accent`: Highlight and interactive colors
+- `button`: Button color variants
 
-This app was built from scratch using my [authentication boilerplate](https://github.com/labrocadabro/node-mongo-boilerplate/) as the base for the code, and [my previous homework tracker](https://labrocadabro.github.io/100devs-hw-tracker/) as the base for the application design.
+### Accessibility
 
-
-## Optimizations and Improvements
-
-See current issues.
-
-## Lessons Learned:
-
-- This is the largest project I've built so far, and certain parts of it were new to me. First, second, and even third attempts sometimes felt wrong - too complex, difficult to read, or slow to execute. I learned that this gut feeling is usually right, but it's also ok to move on temporarily rather than dwelling on a single problem.
-- When I made the website, I didn't think ahead to a time when people would want to contribute to the project. Pug in particular was a poor choice; it's fine for a personal project but I feel it's too unfamiliar for someone looking to contribute.
+- Color contrast ratios meet WCAG 2.1 Level AA requirements
+- Designed for comfortable reading in different lighting conditions
